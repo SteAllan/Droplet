@@ -1,7 +1,7 @@
 /*
 *	Droplet.js
 *	https://github.com/invmatt/Droplet
-*	Version: 1.0.0
+*	Version: 1.0.1
 *	Usage: $.droplet('#selector');
 *	Extend: $.droplet('#selector', {options});
 */
@@ -13,7 +13,9 @@
 			'mode': 'droplet-responsive',	// Class added once the smaller breakpoint has been reached
 			'smallScreen': '768',
 			'largeScreen': '769',
-			'Modernizr': false				// Adds support for Modernizr Media Queries (recommended)
+			'shortScreen': '',				// Optionally set a height at which the screen size could be considered too small for a fixed-position nav. Adds class of 'droplet-short' if specified
+			'Modernizr': false,				// Adds support for Modernizr Media Queries (recommended)
+			'unit': 'px'					// Choose the unit for the Modernizr media queries
         };
 		
         if ( settings ){$.extend(config, settings);}
@@ -37,7 +39,7 @@
 		
 		function windowSize() {
 
-			if ( (config.Modernizr == false && $(window).width() <= config.smallScreen) || (config.Modernizr == true && Modernizr.mq('only screen and (max-width : '+ config.smallScreen +'px)')) ) {
+			if ( (config.Modernizr == false && $(window).width() <= config.smallScreen) || (config.Modernizr == true && Modernizr.mq('only screen and (max-width : '+ config.smallScreen + config.unit +')')) ) {
 				
 				
 				if (menuSize != "small") {
@@ -58,13 +60,17 @@
 						}
 						
 					});
+					
+					if ( (config.shortScreen != '' && config.Modernizr == false && $(window).height() <= config.shortScreen) || (config.shortScreen != '' && config.Modernizr == true && Modernizr.mq('only screen and (max-height : '+ config.shortScreen + config.unit +')')) ) {
+						$(obj).addClass('droplet-short');
+					}
 
 				} 
 				
 			}
 			
 			
-			else if ( (config.Modernizr == false && $(window).width() >= config.largeScreen) || (config.Modernizr == true && Modernizr.mq('only screen and (min-width : '+ config.largeScreen +'px)')) ) {
+			else if ( (config.Modernizr == false && $(window).width() >= config.largeScreen) || (config.Modernizr == true && Modernizr.mq('only screen and (min-width : '+ config.largeScreen + config.unit +')')) ) {
 				if (menuSize != "large") {
 					menuSize = "large";
 					
