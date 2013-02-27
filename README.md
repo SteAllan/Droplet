@@ -9,11 +9,15 @@ Droplet is a customisable, responsive navigation plugin aimed at simplifying and
 <h3>Extend</h3>
 
 <pre>
-'buttonID': 'droplet-menu',		// The default button ID
-'mode': 'droplet-responsive',	// Class added once the smaller breakpoint has been reached
+'buttonID': 'droplet-menu',   // The default button ID
+'mode': 'droplet-responsive', // Class added once the smaller breakpoint has been reached
 'smallScreen': '768',
 'largeScreen': '769',
-'shortScreen': '',				// Optionally set a height at which the screen size could be considered too small for a fixed-position nav. Adds class of 'droplet-short' if specified
-'Modernizr': false,				// Adds support for Modernizr Media Queries (recommended)
-'unit': 'px'					// Choose the unit for the Modernizr media queries (defaults to px)
+'Modernizr': false, 			    // Adds support for Modernizr Media Queries (recommended)
+'subNav': false, 				      // If you have sub-navigation set this to true
+'subClass': '', 			      	// Class of the containing sub navigation UL
+'panel': false, 				      // Create a panel style menu
+'panelPosition': '250',
+'shortScreen': '',            // Optionally set a height at which the screen size could be considered too small for a fixed-position nav. Adds class of 'droplet-short' if specified
+'unit': 'px'                  // Choose the unit for the Modernizr media queries
 </pre>
